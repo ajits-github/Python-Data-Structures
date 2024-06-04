@@ -1,8 +1,8 @@
 """
 Python Data Structures - A Game-Based Approach
 A Star Algorithm maze solver.
-Uses a priority queue containing f-values and (i, j) tuples along with dictionaries for
-predecessors and g-values.
+Uses a priority queue containing f-values and (i, j) 
+tuples along with dictionaries for predecessors and g-values.
 """
 
 from helpers import get_path, offsets, is_legal_pos, read_maze
