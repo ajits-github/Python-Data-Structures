@@ -11,7 +11,6 @@ offsets = {
 }
 
 
-
 def read_maze(file_name):
     """
     Reads a maze stored in a text file and returns a 2d list containing the maze representation.
