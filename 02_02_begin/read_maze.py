@@ -15,7 +15,7 @@ def read_maze(file_name):
             for row in maze:
                 if len(row) != num_cols_top_row:
                     print("The maze is not rectangular.")
-                    # raise SystemExit
+                    raise SystemExit
             return maze
     except OSError:
         print("There is a problem with the file you have selected.")
