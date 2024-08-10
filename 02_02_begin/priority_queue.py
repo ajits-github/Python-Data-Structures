@@ -17,7 +17,8 @@ class PriorityQueue:
         self._index = 0
 
     def put(self, item):
-        # Heapq is a min-heap, so we push the item with (priority, index, value)
+        # Heapq is a min-heap,
+        # so we push the item with (priority, index, value)
         # Index is used to avoid comparison issues with equal priority
         heapq.heappush(self._queue, (item[0], self._index, item[1]))
         self._index += 1
