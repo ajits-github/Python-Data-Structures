@@ -6,7 +6,7 @@ Reading a maze from a text file
 
 def read_maze(file_name):
     """
-    Reads a maze stored in a text file and returns a 2d list containing the maze representation.
+    Reads a maze  and returns a 2d list containing the maze representation.
     """
     try:
         with open(file_name) as fh:
