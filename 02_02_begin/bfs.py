@@ -1,7 +1,9 @@
 """
 Python Data Structures - A Game-Based Approach
 BFS maze solver.
-The queue contains positions as (row, column) tuples. Predecessors are kept in a dictionary.
+The queue contains positions as (row, column) tuples.
+
+Predecessors are kept in a dictionary.
 """
 
 from helpers import get_path, offsets, is_legal_pos, read_maze
@@ -9,7 +11,26 @@ from queue_ll import Queue
 
 
 def bfs(maze, start, goal):
-    pass
+    queue = Queue()
+    queue.enqueue(start)
+    predecessors = {start: None}
+    
+    while not queue.is_empty():
+        current_pos = queue.dequeue()
+        
+        if current_pos == goal:
+            return get_path(predecessors, start, goal)
+        
+        for direction in offsets:
+            row_offset, col_offset = offsets[direction]
+            neighbor = (current_pos[0] + row_offset,
+                        current_pos[1] + col_offset)
+            
+            if is_legal_pos(maze, neighbor) and neighbor not in predecessors:
+                queue.enqueue(neighbor)
+                predecessors[neighbor] = current_pos
+    
+    return None
 
 
 if __name__ == "__main__":
@@ -18,15 +39,15 @@ if __name__ == "__main__":
     start_pos = (0, 0)
     goal_pos = (2, 2)
     result = bfs(maze, start_pos, goal_pos)
+    print("Test 1 result:", result)
     assert result == [(0, 0), (0, 1), (0, 2), (1, 2), (2, 2)]
 
     # Test 2
     maze = read_maze("mazes/mini_maze_bfs.txt")
-    # for row in maze:
-    #     print(row)
     start_pos = (0, 0)
     goal_pos = (2, 2)
     result = bfs(maze, start_pos, goal_pos)
+    print("Test 2 result:", result)
     assert result == [(0, 0), (1, 0), (1, 1), (1, 2), (2, 2)]
 
     # Test 3
@@ -34,4 +55,5 @@ if __name__ == "__main__":
     start_pos = (0, 0)
     goal_pos = (3, 3)
     result = bfs(maze, start_pos, goal_pos)
+    print("Test 3 result:", result)
     assert result is None
