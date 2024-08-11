@@ -14,22 +14,22 @@ def bfs(maze, start, goal):
     queue = Queue()
     queue.enqueue(start)
     predecessors = {start: None}
-    
+
     while not queue.is_empty():
         current_pos = queue.dequeue()
-        
+
         if current_pos == goal:
             return get_path(predecessors, start, goal)
-        
+
         for direction in offsets:
             row_offset, col_offset = offsets[direction]
             neighbor = (current_pos[0] + row_offset,
                         current_pos[1] + col_offset)
-            
+
             if is_legal_pos(maze, neighbor) and neighbor not in predecessors:
                 queue.enqueue(neighbor)
                 predecessors[neighbor] = current_pos
-    
+
     return None
 
 
